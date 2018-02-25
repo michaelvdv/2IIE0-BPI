@@ -13,13 +13,17 @@ def run():
     #print df
 
 def subset(df_combined):
-    df1 = df_combined[df_combined.columns[0:25]] #select first elements up and until diagnose
+    df1 = df_combined.reset_index()
+    df1.columns[0] = 'New_ID'
+    df1['New_ID'] = df1.index + 10000
+    df1 = df_combined[df_combined.columns[0:26]] #select first elements up and until diagnose
     return df1
 
 def decision_tree_model(df_combined):
+    df_combined = df_combined.drop("case_id", axis=1)
     #create feature set and target set
-    features = df_combined.drop('diagnose', axis=1)
-    target = df_combined.loc[:,'diagnose']
+    features = df_combined.drop('Diagnose', axis=1)
+    target = df_combined.loc[:,'Diagnose']
     features_train, features_test, target_train, target_test = train_test_split(features,
                                                                                 target, test_size = 0.20, random_state = 10)
     #Decision Tree with Gini IndexPython
@@ -32,6 +36,6 @@ def decision_tree_model(df_combined):
 
     acc_score = accuracy_score(target_test,prediction,normalize=True)
 
-    print "Accuracy of Decision Tree for",gender,"and",classifier," is", acc_score
+    print "Accuracy of Decision Tree is", acc_score
 
 run()
