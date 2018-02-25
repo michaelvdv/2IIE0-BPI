@@ -13,10 +13,12 @@ def run():
     #print df
 
 def subset(df_combined):
-    df1 = df_combined.reset_index()
-    df1.columns[0] = 'New_ID'
-    df1['New_ID'] = df1.index + 10000
+    #df1 = df_combined.reset_index()
+    #df1.columns[0] = 'New_ID'
+    #df1['New_ID'] = df1.index + 10000
+    df_combined.insert(0,'New_ID',range(10000, 10000 + len(df_combined)))
     df1 = df_combined[df_combined.columns[0:26]] #select first elements up and until diagnose
+    
     return df1
 
 def decision_tree_model(df_combined):
@@ -25,7 +27,7 @@ def decision_tree_model(df_combined):
     features = df_combined.drop('Diagnose', axis=1)
     target = df_combined.loc[:,'Diagnose']
     features_train, features_test, target_train, target_test = train_test_split(features,
-                                                                                target, test_size = 0.20, random_state = 10)
+                                                                                target, test_size = 0.20, random_state = 0)
     #Decision Tree with Gini IndexPython
 
     clf_gini = DecisionTreeClassifier(criterion = "gini", random_state = 100,
