@@ -17,12 +17,13 @@ def subset(df_combined):
     #df1.columns[0] = 'New_ID'
     #df1['New_ID'] = df1.index + 10000
     df_combined.insert(0,'New_ID',range(10000, 10000 + len(df_combined)))
-    df1 = df_combined[df_combined.columns[0:26]] #select first elements up and until diagnose
-    
+    #df1 = df_combined[df_combined.columns[0:26]] #select first elements up and until diagnose
+    selected = ['Age','Diagnose', 'DiagnosticArtAstrup', 'DiagnosticBlood', 'DiagnosticECG', 'DiagnosticIC', 'DiagnosticLacticAcid', 'DiagnosticLiquor', 'DiagnosticOther', 'DiagnosticSputum', 'DiagnosticUrinaryCulture', 'DiagnosticUrinarySediment', 'DiagnosticXthorax', 'ER Sepsis Triage', 'duration', 'total_nr_events']
+    df1 = df_combined[selected]
     return df1
 
 def decision_tree_model(df_combined):
-    df_combined = df_combined.drop("case_id", axis=1)
+    #df_combined = df_combined.drop("case_id", axis=1)
     #create feature set and target set
     features = df_combined.drop('Diagnose', axis=1)
     target = df_combined.loc[:,'Diagnose']
