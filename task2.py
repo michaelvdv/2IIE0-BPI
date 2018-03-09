@@ -58,4 +58,8 @@ def decision_tree_model(df_combined):
 
     print "Accuracy of Naive Bayes is", acc_score
 
+    matrix1 = confusion_matrix(target_test, prediction)
+
+    print matrix1
+
 run()
