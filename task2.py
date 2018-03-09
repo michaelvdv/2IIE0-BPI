@@ -10,10 +10,10 @@ def run():
     df = pd.read_csv('sepsis1.csv')
     df = subset(df)
     decision_tree_model(df)
-    #count = df.groupby('duration').count()
-    #print count
-    #print df['category']
-    #print df
+    count = df.groupby('duration').count()
+    print count
+    print df['category']
+    print df
 
 def condition(row):
     if row['duration'] == 0:
