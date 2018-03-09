@@ -34,7 +34,8 @@ def subset(df_combined):
     df_combined.insert(0,'New_ID',range(10000, 10000 + len(df_combined)))
     #df1 = df_combined[df_combined.columns[0:26]] #select first elements up and until diagnose
     #selected = ['Age', 'Admission IC', 'Admission NC', 'CRP', 'ER Registration', 'ER Triage', 'IV Antibiotics', 'IV Liquid', 'LacticAcid', 'Leucocytes', 'Release A', 'Release B', 'Release C', 'Release D', 'Release E', 'Return ER', 'duration', 'total_nr_events']
-    selected = ['duration', 'case_id', 'DiagnosticArtAstrup', 'InfectionSuspected', 'DiagnosticBlood', 'DisfuncOrg', 'SIRSCritTachypnea', 'Hypotensie', 'SIRSCritHeartRate', 'DiagnosticIC', 'DiagnosticSputum', 'DiagnosticLiquor', 'DiagnosticOther', 'SIRSCriteria2OrMore', 'DiagnosticXthorax', 'SIRSCritTemperature', 'DiagnosticUrinaryCulture', 'SIRSCritLeucos', 'Oligurie', 'Hypoxie', 'DiagnosticUrinarySediment', 'DiagnosticECG', 'DiagnosticLacticAcid', 'Infusion', 'Age', 'Diagnose']
+    #selected = ['duration', 'case_id', 'DiagnosticArtAstrup', 'InfectionSuspected', 'DiagnosticBlood', 'DisfuncOrg', 'SIRSCritTachypnea', 'Hypotensie', 'SIRSCritHeartRate', 'DiagnosticIC', 'DiagnosticSputum', 'DiagnosticLiquor', 'DiagnosticOther', 'SIRSCriteria2OrMore', 'DiagnosticXthorax', 'SIRSCritTemperature', 'DiagnosticUrinaryCulture', 'SIRSCritLeucos', 'Oligurie', 'Hypoxie', 'DiagnosticUrinarySediment', 'DiagnosticECG', 'DiagnosticLacticAcid', 'Infusion', 'Age', 'Diagnose']
+    selected = ['Age','Diagnose', 'DiagnosticArtAstrup', 'DiagnosticBlood', 'DiagnosticECG', 'DiagnosticIC', 'DiagnosticLacticAcid', 'DiagnosticLiquor', 'DiagnosticOther', 'DiagnosticSputum', 'DiagnosticUrinaryCulture', 'DiagnosticUrinarySediment', 'DiagnosticXthorax', 'ER Sepsis Triage','duration']
     df1 = df_combined[selected]
     df1['category'] = df1.apply(condition, axis=1)
     return df1
